@@ -1,0 +1,47 @@
+// NOMBRE PROGRAMA: DCNVRTBG
+// Programa que convierte un numero de N bits en Binario Natural a codigo Gray y visceversa.
+
+: Disp "CNVRT BIN GRAY"
+: Disp "1)BIN->GRAY"
+: Disp "2)GRAY->BIN"
+: Input O
+: Disp "NUM BITS?"
+: Input L
+
+{L} -> Dim(L1)					
+Fill( 0 , L1 )
+
+{L} -> Dim(L2)
+Fill( 0 , L2 )
+
+: for(1 , N , L)
+	: Disp "BIT NUM",F
+	: Input E
+	: If E<0 OR E>1
+	: Then
+		: Disp "ERROR DATO"
+		: Stop
+	: End
+	: E -> L1(N)
+: End
+
+: For(1 , N , L)
+	: If N == 1						// Cuando es el primer Digito.
+		L1(N) -> L2(N)
+	
+	: If N > 1						// Para los demas Digitos.
+	: Then
+		: If O == 1					// CONVERSION BIN A GRAY
+			: L1(N-1) -> A			// Bit anterior
+		: If O == 2					// CONVERISON GRAY A BIN
+			: L2(N-1) -> A			// Bit anterior
+		: L1(N) -> B				// Bit Presente
+		
+		: NOT(A) AND B OR A AND NOT(B) -> L2(N)
+	: End
+: End
+
+: Disp "RESULTADO"
+: Disp L2
+
+
