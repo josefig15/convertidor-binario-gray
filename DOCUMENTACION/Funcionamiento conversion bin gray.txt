@@ -1,0 +1,52 @@
+PRINCIPIO FUNCIONAMIENTO CONVERSION BINARIO A GRAY
+
+	Numero de Bits "L"
+
+	Para L = 4 Bits
+
+	* Se crean dos vectores de la misma Longitud L1 y L2
+
+		Binario Natural
+			L1[ 1 , 2 , 3 , 4 ]
+		Gray 
+			L2[ 1 , 2 , 3 , 4 ]
+
+	* Se realiza la suma sin acarreo (Operacion logica EXOR)
+		
+		A EXOR B = NOT(A) AND B OR A AND NOT(B) 	
+		
+	* Calculo de los digitos en GRAY
+	
+		Para el Primer digito
+		L2(1) = L1(1)
+		Para los demas
+		L2(2) = L1(1) XOR L1(2)
+		L2(3) = L1(2) XOR L1(3)
+		L3(4) = L1(3) XOR L1(4)
+	
+	Dentro de Ciclo For de 1 hasta N
+	
+	Para N = 1 (Caso Especial)
+		L2(1) = L1(1)	
+		
+	Para N = 2
+		A = L1(N-1)	= L1(1) BIT ANTERIOR
+		B = L1(N)	= L1(2) BIT PRESENTE
+		
+		L2(2) = NOT(A) AND B OR A AND NOT(B) 
+		L2(2) = NOT(L1(1)) AND L1(2) OR L1(1) AND NOT(L1(2)) 
+	
+	Para N = 3
+		A = L1(N-1)	= L1(2) BIT ANTERIOR
+		B = L1(N)	= L1(3) BIT PRESENTE
+		
+		L2(2) = NOT(A) AND B OR A AND NOT(B) 
+		L2(2) = NOT(L1(2)) AND L1(3) OR L1(2) AND NOT(L1(3)) 
+		
+	Para N = 4
+		A = L1(N-1)	= L1(3) BIT ANTERIOR
+		B = L1(N)	= L1(4) BIT PRESENTE
+		
+		L2(2) = NOT(A) AND B OR A AND NOT(B) 
+		L2(2) = NOT(L1(3)) AND L1(4) OR L1(3) AND NOT(L1(4)) 
+	
